@@ -1,0 +1,3 @@
+<%- include('../partials/header') %>
+<section class="wrap success-box"><div class="check">✓</div><p class="eyebrow">Order received</p><h1>Thank you, <%= order.customer.name %>.</h1><p>Your order <strong><%= order.orderNumber %></strong> has been placed successfully.</p><div class="order-meta"><span>Payment<strong>Cash on Delivery</strong></span><span>Status<strong><%= order.status %></strong></span><span>Total<strong><%= formatMoney(order.total) %></strong></span></div><a class="button" href="/products">Continue shopping</a></section>
+<%- include('../partials/footer') %>

@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+<section class="wrap page-head"><p class="eyebrow">Your order</p><h1>Shopping cart</h1></section>
+<section class="wrap cart-layout">
+  <div>
+    <% if (!cart.items.length) { %><div class="empty">Your cart is empty. <a href="/products">Browse products</a>.</div><% } %>
+    <% cart.items.forEach(item => { %><article class="cart-item"><img src="<%= item.product.image %>" alt=""><div><h3><%= item.product.name %></h3><p><%= formatMoney(item.product.price) %> each</p></div><form method="post" action="/cart/update"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><input type="hidden" name="productId" value="<%= item.product._id %>"><input type="number" name="quantity" min="0" max="<%= Math.min(item.product.stock,99) %>" value="<%= item.quantity %>"><button class="text-button">Update</button></form><form method="post" action="/cart/remove"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><input type="hidden" name="productId" value="<%= item.product._id %>"><button class="text-button danger">Remove</button></form><strong><%= formatMoney(item.lineTotal) %></strong></article><% }) %>
+  </div>
+  <aside class="summary"><h2>Summary</h2><div><span>Items</span><strong><%= cart.count %></strong></div><div><span>Subtotal</span><strong><%= formatMoney(cart.subtotal) %></strong></div><div class="summary-total"><span>Total</span><strong><%= formatMoney(cart.subtotal) %></strong></div><% if (cart.items.length) { %><a class="button full" href="/checkout">Checkout</a><% } %></aside>
+</section>
+<%- include('../partials/footer') %>

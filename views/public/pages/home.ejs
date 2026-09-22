@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+<section class="hero wrap">
+  <div>
+    <p class="eyebrow">Simple commerce, clean foundation</p>
+    <h1>A focused storefront without the premium complexity.</h1>
+    <p>Products, categories, inventory, cart and guest cash-on-delivery checkout—all in one lightweight starter.</p>
+    <div class="actions"><a class="button" href="/products">Shop products</a></div>
+  </div>
+  <div class="hero-card"><span>VITALE</span><strong>CMS Lite</strong><small>Free starter edition</small></div>
+</section>
+<section class="wrap section">
+  <div class="section-head"><div><p class="eyebrow">Latest products</p><h2>Storefront essentials</h2></div><a href="/products">View all →</a></div>
+  <% if (!products.length) { %><div class="empty">No products yet. Add your first product from the admin panel.</div><% } %>
+  <div class="product-grid">
+    <% products.forEach(product => { %>
+      <article class="product-card">
+        <a href="/products/<%= product.slug %>"><img src="<%= product.image %>" alt="<%= product.name %>"></a>
+        <div class="card-body"><small><%= product.category?.name || 'Product' %></small><h3><a href="/products/<%= product.slug %>"><%= product.name %></a></h3><div class="price-row"><strong><%= formatMoney(product.price) %></strong><span><%= product.stock %> in stock</span></div></div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

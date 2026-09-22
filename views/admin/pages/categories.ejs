@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+<div class="admin-head">
+  <div>
+    <p class="kicker">Catalog</p>
+    <h1>Categories</h1>
+    <p>Simple flat categories for organizing products.</p>
+  </div>
+</div>
+
+<% if (error) { %><div class="alert"><%= error %></div><% } %>
+<% if (success) { %><div class="notice"><%= success %></div><% } %>
+
+<section class="admin-grid">
+  <form class="admin-card form-stack" method="post" action="<%= editCategory ? `/admin/categories/${editCategory._id}/update` : '/admin/categories' %>">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <h2><%= editCategory ? 'Edit category' : 'Add category' %></h2>
+    <label>
+      Name
+      <input name="name" required maxlength="80" value="<%= editCategory?.name || '' %>">
+    </label>
+    <label>
+      Description
+      <textarea name="description" maxlength="500"><%= editCategory?.description || '' %></textarea>
+    </label>
+    <button class="admin-button" type="submit"><%= editCategory ? 'Save changes' : 'Add category' %></button>
+    <% if (editCategory) { %><a class="cancel" href="/admin/categories">Cancel editing</a><% } %>
+  </form>
+
+  <div class="admin-card table-card">
+    <div class="card-title"><h2>All categories</h2><span><%= categories.length %></span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Name</th><th>Slug</th><th>Description</th><th></th></tr></thead>
+        <tbody>
+          <% categories.forEach(category => { %>
+            <tr>
+              <td><strong><%= category.name %></strong></td>
+              <td><code><%= category.slug %></code></td>
+              <td><%= category.description || '—' %></td>
+              <td class="actions-cell">
+                <a href="/admin/categories?edit=<%= category._id %>">Edit</a>
+                <form method="post" action="/admin/categories/<%= category._id %>/delete" onsubmit="return confirm('Delete this category?')">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

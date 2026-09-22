@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+<section class="wrap page-head"><p class="eyebrow">Shop</p><h1>All products</h1></section>
+<section class="wrap shop-layout">
+  <form class="filters" method="get" action="/products">
+    <label>Search<input name="q" value="<%= q %>" placeholder="Search products"></label>
+    <label>Category<select name="category"><option value="">All categories</option><% categories.forEach(category => { %><option value="<%= category.slug %>" <%= category.slug === categorySlug ? 'selected' : '' %>><%= category.name %></option><% }) %></select></label>
+    <button class="button" type="submit">Apply</button>
+  </form>
+  <div>
+    <% if (!products.length) { %><div class="empty">No products match your filters.</div><% } %>
+    <div class="product-grid">
+      <% products.forEach(product => { %>
+        <article class="product-card"><a href="/products/<%= product.slug %>"><img src="<%= product.image %>" alt="<%= product.name %>"></a><div class="card-body"><small><%= product.category?.name || 'Product' %></small><h3><a href="/products/<%= product.slug %>"><%= product.name %></a></h3><div class="price-row"><strong><%= formatMoney(product.price) %></strong><span><%= product.stock %> in stock</span></div></div></article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

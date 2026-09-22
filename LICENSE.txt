@@ -1,0 +1,28 @@
+Vitale CMS Lite Source-Available License
+Version 1.0
+
+Copyright (c) 2026. All rights reserved.
+
+Permission is granted, free of charge, to download, use, modify, and deploy this
+Vitale CMS Lite source code for personal projects, learning, internal business
+use, and client websites.
+
+You may publish forks of the Lite edition on public Git hosting when the fork
+retains this license and clearly identifies itself as based on Vitale CMS Lite.
+
+You may NOT sell, sublicense, repackage, or redistribute Vitale CMS Lite itself
+as a competing CMS, template, starter kit, boilerplate, source-code product, or
+paid/free marketplace download. You may not represent the original Vitale CMS
+Lite source as entirely your own work.
+
+This license applies only to the Lite edition contained in this repository. It
+does not grant rights to the separate paid/full Vitale CMS product, premium
+features, premium assets, or commercial-edition source code.
+
+Third-party packages and assets remain subject to their own licenses.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR
+A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING
+FROM THE SOFTWARE OR THE USE OF THE SOFTWARE.

@@ -1,0 +1,8 @@
+<%- include('../partials/header') %>
+<section class="wrap detail-grid">
+  <div class="detail-image"><img src="<%= product.image %>" alt="<%= product.name %>"></div>
+  <div class="detail-copy"><p class="eyebrow"><%= product.category?.name || 'Product' %></p><h1><%= product.name %></h1><p class="detail-price"><%= formatMoney(product.price) %></p><p class="muted"><%= product.description || 'A simple product description can be added from the admin panel.' %></p><p class="stock"><%= product.stock > 0 ? `${product.stock} available` : 'Out of stock' %></p>
+    <% if (product.stock > 0) { %><form class="add-form" method="post" action="/cart/add"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><input type="hidden" name="productId" value="<%= product._id %>"><label>Quantity<input type="number" min="1" max="<%= Math.min(product.stock, 99) %>" name="quantity" value="1"></label><button class="button" type="submit">Add to cart</button></form><% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

@@ -1,0 +1,23 @@
+{
+  "name": "vitale-cms-lite",
+  "version": "1.0.0",
+  "description": "A lightweight source-available ecommerce CMS starter with products, categories, cart, guest COD checkout and order management.",
+  "private": false,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-rate-limit": "^6.7.0",
+    "express-session": "^1.19.0",
+    "helmet": "^7.0.0",
+    "mongoose": "^9.9.5",
+    "multer": "2.3.0"
+  }
+}

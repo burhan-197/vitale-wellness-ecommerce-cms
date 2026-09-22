@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> · Vitale Lite</title>
+  <meta name="description" content="<%= metaDescription || 'Vitale CMS Lite ecommerce starter.' %>">
+  <link rel="stylesheet" href="/css/storefront.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/">VITALE <span>Lite</span></a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/">Home</a>
+    <a href="/products">Shop</a>
+    <a href="/cart">Cart<% if (cartCount) { %> (<%= cartCount %>)<% } %></a>
+  </nav>
+</header>
+<main>

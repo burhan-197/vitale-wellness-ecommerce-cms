@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<section class="wrap page-head"><p class="eyebrow">Guest checkout</p><h1>Complete your order</h1><p>No customer account required. Payment is Cash on Delivery.</p></section>
+<section class="wrap checkout-layout">
+  <form class="panel form-grid" method="post" action="/checkout"><input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <% if (error) { %><div class="alert"><%= error %></div><% } %>
+    <label>Full name *<input name="name" required maxlength="120" value="<%= form.name || '' %>"></label>
+    <label>Phone *<input name="phone" required maxlength="50" value="<%= form.phone || '' %>"></label>
+    <label>Email (optional)<input type="email" name="email" maxlength="160" value="<%= form.email || '' %>"></label>
+    <label>City *<input name="city" required maxlength="100" value="<%= form.city || '' %>"></label>
+    <label class="wide">Address *<textarea name="address" required maxlength="500"><%= form.address || '' %></textarea></label>
+    <label class="wide">Order notes<textarea name="notes" maxlength="1000"><%= form.notes || '' %></textarea></label>
+    <div class="wide payment-note"><strong>Payment:</strong> Cash on Delivery / manual collection</div>
+    <button class="button wide" type="submit">Place order</button>
+  </form>
+  <aside class="summary"><h2>Your order</h2><% cart.items.forEach(item => { %><div><span><%= item.product.name %> × <%= item.quantity %></span><strong><%= formatMoney(item.lineTotal) %></strong></div><% }) %><div class="summary-total"><span>Total</span><strong><%= formatMoney(cart.subtotal) %></strong></div></aside>
+</section>
+<%- include('../partials/footer') %>

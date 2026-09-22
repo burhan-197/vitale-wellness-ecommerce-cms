@@ -1,0 +1,70 @@
+<%- include('../partials/header') %>
+<div class="admin-head">
+  <div>
+    <p class="kicker">Catalog</p>
+    <h1>Products</h1>
+    <p>Manage the products available in your storefront.</p>
+  </div>
+</div>
+
+<% if (error) { %><div class="alert"><%= error %></div><% } %>
+<% if (success) { %><div class="notice"><%= success %></div><% } %>
+
+<section class="admin-grid">
+  <form class="admin-card form-stack" method="post" enctype="multipart/form-data" action="<%= editProduct ? `/admin/products/${editProduct._id}/update` : '/admin/products' %>">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <h2><%= editProduct ? 'Edit product' : 'Add product' %></h2>
+    <label>Name<input name="name" required maxlength="140" value="<%= editProduct?.name || '' %>"></label>
+    <label>
+      Category
+      <select name="category" required>
+        <option value="">Choose category</option>
+        <% categories.forEach(category => { %>
+          <option value="<%= category._id %>" <%= String(editProduct?.category || '') === String(category._id) ? 'selected' : '' %>><%= category.name %></option>
+        <% }) %>
+      </select>
+    </label>
+    <div class="two">
+      <label>Price<input type="number" name="price" min="0.01" step="0.01" required value="<%= editProduct?.price ?? '' %>"></label>
+      <label>Stock<input type="number" name="stock" min="0" step="1" required value="<%= editProduct?.stock ?? 0 %>"></label>
+    </div>
+    <label>Description<textarea name="description" maxlength="3000"><%= editProduct?.description || '' %></textarea></label>
+    <label>
+      Product image
+      <input type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif">
+      <small><%= editProduct ? 'Leave empty to keep the current image.' : 'Optional. A placeholder is used when empty.' %></small>
+    </label>
+    <label class="check-row"><input type="checkbox" name="isActive" <%= !editProduct || editProduct.isActive ? 'checked' : '' %>> Visible on storefront</label>
+    <button class="admin-button" type="submit"><%= editProduct ? 'Save changes' : 'Add product' %></button>
+    <% if (editProduct) { %><a class="cancel" href="/admin/products">Cancel editing</a><% } %>
+  </form>
+
+  <div class="admin-card table-card">
+    <div class="card-title"><h2>All products</h2><span><%= products.length %></span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <% products.forEach(product => { %>
+            <tr>
+              <td><div class="product-cell"><img src="<%= product.image %>" alt=""><strong><%= product.name %></strong></div></td>
+              <td><%= product.category?.name || '—' %></td>
+              <td><%= formatMoney(product.price) %></td>
+              <td><%= product.stock %></td>
+              <td><span class="pill"><%= product.isActive ? 'Active' : 'Hidden' %></span></td>
+              <td class="actions-cell">
+                <a href="/admin/products?edit=<%= product._id %>">Edit</a>
+                <form method="post" action="/admin/products/<%= product._id %>/delete" onsubmit="return confirm('Delete this product?')">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% if (!products.length) { %><p class="empty-admin">No products yet.</p><% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

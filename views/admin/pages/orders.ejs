@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<div class="admin-head">
+  <div>
+    <p class="kicker">Fulfillment</p>
+    <h1>Orders</h1>
+    <p>Guest COD orders and basic status handling.</p>
+  </div>
+</div>
+
+<% if (error) { %><div class="alert"><%= error %></div><% } %>
+<% if (success) { %><div class="notice"><%= success %></div><% } %>
+
+<div class="admin-card table-card">
+  <div class="card-title"><h2>All orders</h2><span><%= orders.length %></span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+      <tbody>
+        <% orders.forEach(order => { %>
+          <tr>
+            <td><strong><%= order.orderNumber %></strong><small>COD</small></td>
+            <td><strong><%= order.customer.name %></strong><small><%= order.customer.phone %></small><small><%= order.customer.city %></small></td>
+            <td><% order.items.forEach(item => { %><small><%= item.name %> × <%= item.quantity %></small><% }) %></td>
+            <td><%= formatMoney(order.total) %></td>
+            <td>
+              <form class="status-form" method="post" action="/admin/orders/<%= order._id %>/status">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <select name="status">
+                  <% statuses.forEach(status => { %>
+                    <option value="<%= status %>" <%= order.status === status ? 'selected' : '' %>><%= status %></option>
+                  <% }) %>
+                </select>
+                <button type="submit">Save</button>
+              </form>
+            </td>
+            <td><%= new Date(order.createdAt).toLocaleDateString() %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <% if (!orders.length) { %><p class="empty-admin">No orders yet.</p><% } %>
+</div>
+<%- include('../partials/footer') %>
