@@ -1,57 +1,83 @@
-# Vitale CMS Lite
+# Vitale Wellness Ecommerce CMS Lite
 
-Vitale CMS Lite is the free/source-available starter edition of the Vitale ecommerce CMS. It intentionally contains only the core commerce flow so developers can evaluate the project structure before moving to the full commercial edition.
+A free, reusable **Node.js ecommerce CMS starter** for wellness, supplements, health and beauty stores.
 
-## Included
+Built with **Node.js, Express, EJS and MongoDB**.
 
-- First-time admin setup and basic admin login
-- Product add, edit and delete
-- Flat product categories
-- One local image per product
-- Basic price and stock quantity
+## Full Edition Preview
+
+> The screenshots below show the premium Full Edition. Vitale Lite contains the essential ecommerce flow with a simplified interface and feature set.
+
+### Storefront
+![Vitale Full Storefront](screenshots/full-storefront.png)
+
+### Products
+![Vitale Full Products](screenshots/full-products.png)
+
+### Product Details
+![Vitale Full Product Detail](screenshots/full-product-detail.png)
+
+### Cart
+![Vitale Full Cart](screenshots/full-cart.png)
+
+### Mobile Storefront
+![Vitale Full Mobile Storefront](screenshots/full-mobile-storefront.png)
+
+## Lite Features
+
+- Admin setup and secure login
+- Product add/edit/delete
+- Categories
+- Local product image uploads
+- Basic price and stock management
 - Responsive storefront
-- Product search/category filtering
-- Session cart
-- Guest checkout (no customer accounts)
-- Cash on Delivery/manual order creation
-- Admin order list and status updates
-- Automatically generated basic page title/description metadata
+- Product search and category filtering
+- Shopping cart
+- Guest checkout
+- Cash on Delivery / manual orders
+- Order management and status updates
+- Automatic stock handling
+- Basic SEO meta tags
 
-## Intentionally not included
+## Tech Stack
 
-The Lite edition does not contain the premium CMS systems such as advanced theme/homepage customization, customer accounts, online payment gateways, coupons, bundles/routines, blog CMS, CSV tools, backup/restore, cloud media storage, email/SMTP, Google login, advanced variants/inventory, advanced SEO controls, analytics, or extended settings.
+**Node.js · Express.js · MongoDB · Mongoose · EJS · HTML · CSS · JavaScript**
 
-## Quick start
+## Lite vs Full Version
 
-1. Install Node.js and MongoDB.
-2. Copy `.env.example` to `.env`.
-3. Set `MONGODB_URI` and a long random `SESSION_SECRET`.
-4. Optional but recommended for a public first deployment: set `ADMIN_SETUP_TOKEN`.
-5. Run:
+Vitale Lite focuses on the essential ecommerce workflow.
+
+The **Full Edition** adds advanced features such as theme customization, homepage controls, customer accounts, Stripe/PayPal, bundles, blog CMS, advanced variants and inventory, Cloudinary, email/SMTP, CSV tools, backup/restore, advanced SEO, analytics and additional CMS controls.
+
+### Get the Full Version
+
+**[Buy Vitale CMS Full Edition on Lemon Squeezy](https://burhan197.lemonsqueezy.com/checkout/buy/7dcfc9d7-af6e-4958-b32d-5cd5c0f1c9df)**
+
+## Quick Start
 
 ```bash
+git clone https://github.com/burhan-197/vitale-wellness-ecommerce-cms.git
+cd vitale-wellness-ecommerce-cms
 npm install
 npm start
 ```
 
-Open `http://localhost:3000/admin`. On a fresh database you will be redirected to `/admin/setup` to create the one admin account.
+Copy `.env.example` to `.env`, configure MongoDB and `SESSION_SECRET`, then open:
 
-## Product images
+```text
+http://localhost:3000/admin/setup
+```
 
-Lite stores product images locally in `public/uploads/products`. On hosts with an ephemeral filesystem, uploaded files can disappear after redeploy/restart. The full commercial edition is intended for richer media/storage workflows.
+Create the administrator, add a category and start adding products.
 
-## Security notes
+## Product Images
 
-- Use HTTPS in production.
-- Use a strong, unique `SESSION_SECRET`.
-- Set `ADMIN_SETUP_TOKEN` before exposing a fresh installation publicly.
-- Keep Node.js and dependencies updated.
-- This starter does not replace a professional security review for a production business.
+Lite uses local JPG, PNG and WebP uploads with **one image per product** and a **5 MB maximum size**.
 
-## Full version
+## Checkout
 
-The full Vitale CMS adds the advanced commerce, customization, content, integrations, automation and management features intentionally removed from this Lite repository. Add your Gumroad/Lemon Squeezy product link here before publishing the repository.
+Vitale Lite uses **guest checkout** with Cash on Delivery / manual order placement. No customer account is required.
 
-## License
+---
 
-See `LICENSE.txt`. This Lite repository is source-available and free to use under its own license; the paid/full Vitale CMS remains governed by its separate commercial license.
+If you find Vitale Lite useful, consider giving the repository a **⭐ star**.
