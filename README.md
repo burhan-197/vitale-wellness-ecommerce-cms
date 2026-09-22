@@ -51,7 +51,7 @@ The **Full Edition** adds advanced features such as theme customization, homepag
 
 ### Get the Full Version
 
-**[Buy Vitale CMS Full Edition on Lemon Squeezy](https://burhan197.lemonsqueezy.com/checkout/buy/7dcfc9d7-af6e-4958-b32d-5cd5c0f1c9df)**
+**[Buy Vitale CMS Full Edition on Lemon Squeezy](https://whop.com/burhan-builds/wellness-store-cms-with-admin-panel/)**
 
 ## Quick Start
 
