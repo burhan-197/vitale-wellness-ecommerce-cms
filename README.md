@@ -1,4 +1,12 @@
+![Node.js](https://img.shields.io/badge/Node.js-18+-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+
 # Vitale Wellness Ecommerce CMS Lite
+
+> 🚀 **Want the full version?** Stripe, PayPal, Google Sign-In, SMTP, 
+> white-label ready → [Get the Full Edition on Whop](https://whop.com/burhan-builds/wellness-store-cms-with-admin-panel/)
 
 A free, reusable **Node.js ecommerce CMS starter** for wellness, supplements, health and beauty stores.
 
@@ -48,10 +56,6 @@ Built with **Node.js, Express, EJS and MongoDB**.
 Vitale Lite focuses on the essential ecommerce workflow.
 
 The **Full Edition** adds advanced features such as theme customization, homepage controls, customer accounts, Stripe/PayPal, bundles, blog CMS, advanced variants and inventory, Cloudinary, email/SMTP, CSV tools, backup/restore, advanced SEO, analytics and additional CMS controls.
-
-### Get the Full Version
-
-**[Buy Vitale CMS Full Edition on Lemon Squeezy](https://whop.com/burhan-builds/wellness-store-cms-with-admin-panel/)**
 
 ## Quick Start
 
